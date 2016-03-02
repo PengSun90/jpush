@@ -2,6 +2,7 @@ package com.xunmeng.jpush.app;
 
 import android.app.Application;
 
+import com.umeng.analytics.MobclickAgent;
 import com.xunmeng.jpush.utils.JPushUtils;
 
 /**
@@ -14,6 +15,10 @@ public class MY extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initUmengAnalysis();
         JPushUtils.JPushInterfaceInit(this);
+    }
+    private void initUmengAnalysis() {
+        MobclickAgent.openActivityDurationTrack(false);
     }
 }

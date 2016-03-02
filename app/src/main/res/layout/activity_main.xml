@@ -5,6 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
     <!--<include layout="";-->
-
+    <FrameLayout
+        android:id="@+id/frame_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/frameLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff">
+    </FrameLayout>
 
 </LinearLayout>

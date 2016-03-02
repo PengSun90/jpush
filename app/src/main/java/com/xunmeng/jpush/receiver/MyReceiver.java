@@ -94,7 +94,7 @@ public class MyReceiver extends BroadcastReceiver {
                         .setAutoCancel(true)
                         .setContentTitle(title)
                         .setContentText(message)
-                        .setSmallIcon(R.drawable.logo)
+                        .setSmallIcon(R.drawable.new_logo)
                         .setContentIntent(pendingIntent)
                         .setWhen(System.currentTimeMillis());
                 notification = builder.getNotification();
@@ -104,7 +104,7 @@ public class MyReceiver extends BroadcastReceiver {
                         .setAutoCancel(true)
                         .setContentTitle(title)
                         .setContentText(message)
-                        .setSmallIcon(R.drawable.logo)
+                        .setSmallIcon(R.drawable.new_logo)
                         .setContentIntent(pendingIntent)
                         .setWhen(System.currentTimeMillis())
                         .build();
