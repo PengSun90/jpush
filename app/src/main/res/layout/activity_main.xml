@@ -3,17 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.MainActivity"
+    android:orientation="vertical">
     <!--<include layout="";-->
     <FrameLayout
         android:id="@+id/frame_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/frameLayout1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:background="#ffffff">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#007777">
     </FrameLayout>
+    <include layout="@layout/comm_boot"
+        android:id="@+id/comm_boot"
+        />
 
 </LinearLayout>
