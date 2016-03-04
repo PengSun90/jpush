@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:roundImage="http://schemas.android.com/apk/com.xunmeng.jpush"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:background="@color/titleblue">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+            <com.xunmeng.jpush.widget.RoundImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/me"
+                roundImage:border_width="1dp"
+                android:layout_centerVertical="true"
+                roundImage:border_color="@color/white"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/icon_view">
+            </com.xunmeng.jpush.widget.RoundImageView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:layout_toRightOf="@+id/icon_view"
+                android:layout_toEndOf="@+id/icon_view"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="我本无名"
+                    android:textColor="#ffffff"
+                    />
+                <TextView
+                    android:id="@+id/mingyan"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="生活本就曲曲折折"
+                    android:textColor="#ffffff"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+        
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lv_main_drawer_leftmenu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="#fff"
+        android:choiceMode="singleChoice"
+        android:layout_marginTop="5dp"
+        android:divider="@null"
+        android:scrollbars="none"></ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="#fff"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/about_me"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:background="@drawable/main_drawer_background"
+            android:clickable="true"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="关于我"
+                android:textColor="@drawable/main_drawer_text_color"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:id="@+id/setting"
+            android:background="@drawable/main_drawer_background"
+            android:clickable="true"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="设置"
+                android:textColor="@drawable/main_drawer_text_color"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/titleblue"
+            android:layout_weight="1"></LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

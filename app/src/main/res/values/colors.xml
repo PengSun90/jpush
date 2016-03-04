@@ -3,6 +3,7 @@
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="titleblue">#3A5FCD</color>
     <color name="colorAccent">#FF4081</color>
     <color name="grey_">#999</color>
     <color name="line_normal">#d9d9d9</color>

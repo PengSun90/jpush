@@ -1,5 +1,6 @@
 package com.xunmeng.jpush.ui;
 
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,16 +10,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.xunmeng.jpush.LeftAdapter;
 import com.xunmeng.jpush.R;
+import com.xunmeng.jpush.entity.MainDrawerMenu;
 import com.xunmeng.jpush.fragment.FindFragment;
 import com.xunmeng.jpush.fragment.NewFragment;
 import com.xunmeng.jpush.fragment.ReadFragment;
 import com.xunmeng.jpush.fragment.VideoFragment;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+public class MainActivity extends BaseActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
 
     private Toolbar toolbar;
     private DrawerLayout mDrawerLayout;
@@ -33,6 +43,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ReadFragment readFragment;
     private FindFragment findFragment;
     private Fragment currentFragment;
+    private ImageView head_icon;
+    private ListView list_found;
+    private LinearLayout about_me;
+    private LinearLayout setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +57,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+
     private void initUi() {
         initToolbar();
-    }
+        head_icon = (ImageView) findViewById(R.id.icon_view);
+        head_icon.setOnClickListener(this);
 
+        list_found = (ListView) findViewById(R.id.lv_main_drawer_leftmenu);
+        list_found.setAdapter(new LeftAdapter(this, getMenuItem()));
+        list_found.setOnItemClickListener(this);
+
+        about_me = (LinearLayout)findViewById(R.id.about_me);
+        about_me.setOnClickListener(this);
+
+        setting = (LinearLayout)findViewById(R.id.setting);
+        setting.setOnClickListener(this);
+
+    }
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.tb_main);
@@ -76,6 +103,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+    /**
+     * 从arrays.xml中取出数据，装入list<T>中
+     *
+     * @return
+     */
+    private List<MainDrawerMenu> getMenuItem() {
+        List<MainDrawerMenu> list_menu = new ArrayList<MainDrawerMenu>();
+
+        String[] itemTitle = getResources().getStringArray(R.array.item_title);
+        TypedArray itemIconRes = getResources().obtainTypedArray(R.array.item_icon_res);
+
+        for (int i = 0; i < itemTitle.length; i++) {
+
+            MainDrawerMenu lmi = new MainDrawerMenu();
+            lmi.setMainDrawer_icon(itemIconRes.getResourceId(i, 0));
+            lmi.setMainDrawer_menuName(itemTitle[i]);
+            list_menu.add(lmi);
+        }
+        return list_menu;
+    }
 
     private void setDefaultFragment() {
         newFragment = NewFragment.getInstance();
@@ -117,8 +164,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 // 使用当前Fragment的布局替代id_content的控件
                 switchContent(currentFragment, findFragment);
                 break;
+            case R.id.icon_view:
+                Toast.makeText(MainActivity.this,"登录",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.about_me:
+                Toast.makeText(MainActivity.this,"关于我",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.setting:
+                Toast.makeText(MainActivity.this,"设置",Toast.LENGTH_SHORT).show();
+                break;
         }
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(MainActivity.this,String.valueOf(position) +"  "+ String.valueOf(id),Toast.LENGTH_SHORT).show();
+    }
+
 
     /**
      * 当fragment进行切换时，采用隐藏与显示的方法加载fragment以防止数据的重复加载
@@ -141,4 +203,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         }
     }
+
+
 }
