@@ -11,13 +11,13 @@ import com.xunmeng.jpush.R;
 /**
  * Created by Administrator on 2016/3/3.
  */
-public class NewFragment extends Basefragment {
+public class FindFragment extends Basefragment {
 
     private Activity activity;
     private static String KEY_TITLE = "key_yitle";
-    private static NewFragment fragment;
+    private static FindFragment fragment;
 
-    private NewFragment() {
+    private FindFragment() {
 
     }
 
@@ -27,9 +27,9 @@ public class NewFragment extends Basefragment {
     }
 
 
-    public static NewFragment getInstance() {
+    public static FindFragment getInstance() {
         if (fragment == null) {
-            fragment = new NewFragment();
+            fragment = new FindFragment();
             Bundle bundle = new Bundle();
             bundle.putString(KEY_TITLE, "news");
             fragment.setArguments(bundle);
@@ -46,7 +46,7 @@ public class NewFragment extends Basefragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.new_frg_ll, container, false);
+        View view = inflater.inflate(R.layout.find_frg_ll, container, false);
 //        Toast.makeText(activity, activity.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
         return view;
 

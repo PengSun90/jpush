@@ -39,6 +39,7 @@
     <color name="name_light_two_color">#999</color>
     <color name="transparent">#00000000</color>
     <color name="green">#6DAC0B</color>
+    <color name="greenmore">#009959</color>
     <color name="orange">#FF9600</color>
     <color name="listview_normal">#FFFFFF</color>
     <color name="listview_pressed">#E4E4E4</color>
