@@ -192,7 +192,7 @@ public class CommonUtils {
 
     public static Map<String, String> getHeaderAccesstoken(Context context) {
         Map<String, String> headerAccesstoken = new HashMap<String, String>();
-        String token = PreferencesUtils.shareInstance(context).readJSAccesstoken();
+        String token = PreferencesUtils.shareInstance().readJSAccesstoken();
         headerAccesstoken.put("cookie", "AccessToken=" + token);
         LogUtils.d("getHeaderAccesstoken = " + token);
         return headerAccesstoken;
@@ -215,7 +215,7 @@ public class CommonUtils {
 
 
     public static String getUUID(Context context) {
-        PreferencesUtils preferencesUtils = PreferencesUtils.shareInstance(context);
+        PreferencesUtils preferencesUtils = PreferencesUtils.shareInstance();
         String mUUID = preferencesUtils.readUUID();
         if (TextUtils.isEmpty(mUUID)) {
             mUUID = UUID.randomUUID().toString();
@@ -301,7 +301,7 @@ public class CommonUtils {
      * @return
      */
     public static int getWebviewWidth(Context context) {
-        return PreferencesUtils.shareInstance(context).readWebviewWidth();
+        return PreferencesUtils.shareInstance().readWebviewWidth();
     }
 
     /**
@@ -310,7 +310,7 @@ public class CommonUtils {
      * @return
      */
     public static int getWebviewHeight(Context context) {
-        return PreferencesUtils.shareInstance(context).readWebviewHeight();
+        return PreferencesUtils.shareInstance().readWebviewHeight();
     }
 
     /**
@@ -319,12 +319,12 @@ public class CommonUtils {
      * @return
      */
     public static String getDeviceId(Context context) {
-        String deviceId = PreferencesUtils.shareInstance(context).readDeviceId();
+        String deviceId = PreferencesUtils.shareInstance().readDeviceId();
         if (TextUtils.isEmpty(deviceId)) {
             TelephonyManager tm = null;
             tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             deviceId = tm.getDeviceId();
-            PreferencesUtils.shareInstance(context).writeDeviceId(deviceId);
+            PreferencesUtils.shareInstance().writeDeviceId(deviceId);
         }
         return deviceId;
     }
@@ -335,13 +335,13 @@ public class CommonUtils {
      * @return
      */
     public static String getMacAddress(Context context) {
-        String macAddress = PreferencesUtils.shareInstance(context).readMacAddress();
+        String macAddress = PreferencesUtils.shareInstance().readMacAddress();
         if (TextUtils.isEmpty(macAddress)) {
             WifiManager wifi = null;
             wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
             WifiInfo info = wifi.getConnectionInfo();
             macAddress = info.getMacAddress();
-            PreferencesUtils.shareInstance(context).writeMacAddress(macAddress);
+            PreferencesUtils.shareInstance().writeMacAddress(macAddress);
         }
         return macAddress;
     }
@@ -352,13 +352,13 @@ public class CommonUtils {
      * @return
      */
     public static String getSimSerialNumber(Context context) {
-        String simSerialNumber = PreferencesUtils.shareInstance(context).readSimSerialNumber();
+        String simSerialNumber = PreferencesUtils.shareInstance().readSimSerialNumber();
         if (TextUtils.isEmpty(simSerialNumber)) {
             TelephonyManager tm = null;
             tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             String ssn = tm.getSimSerialNumber();
             if (!TextUtils.isEmpty(ssn)) {
-                PreferencesUtils.shareInstance(context).writeSimSerialNumber(ssn);
+                PreferencesUtils.shareInstance().writeSimSerialNumber(ssn);
                 simSerialNumber = ssn;
             }
         }
@@ -371,11 +371,11 @@ public class CommonUtils {
      * @return
      */
     public static String getSerialNumber(Context context) {
-        String serialNumber = PreferencesUtils.shareInstance(context).readSerialNumber();
+        String serialNumber = PreferencesUtils.shareInstance().readSerialNumber();
         if (TextUtils.isEmpty(serialNumber)) {
             String sn = android.os.Build.SERIAL;
             if (!TextUtils.isEmpty(sn)) {
-                PreferencesUtils.shareInstance(context).writeSerialNumber(serialNumber);
+                PreferencesUtils.shareInstance().writeSerialNumber(serialNumber);
                 serialNumber = sn;
             }
         }
@@ -388,7 +388,7 @@ public class CommonUtils {
      * @return
      */
     public static String getAndroidId(Context context) {
-        String androidId = PreferencesUtils.shareInstance(context).readAndroidId();
+        String androidId = PreferencesUtils.shareInstance().readAndroidId();
         if (TextUtils.isEmpty(androidId)) {
             String ai = null;
             try {
@@ -397,7 +397,7 @@ public class CommonUtils {
                 e.printStackTrace();
             }
             if (!TextUtils.isEmpty(ai)) {
-                PreferencesUtils.shareInstance(context).writeAndroidId(ai);
+                PreferencesUtils.shareInstance().writeAndroidId(ai);
                 androidId = ai;
             }
         }

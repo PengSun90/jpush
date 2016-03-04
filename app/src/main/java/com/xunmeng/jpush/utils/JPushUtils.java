@@ -73,7 +73,7 @@ public class JPushUtils {
      */
     public static String getDeviceToken(Context context) {
         String device_token = JPushInterface.getRegistrationID(context);
-        PreferencesUtils.shareInstance(context).writeDeviceToken(device_token);
+        PreferencesUtils.shareInstance().writeDeviceToken(device_token);
         LogUtils.d(TAG, "device_token = " + device_token);
         return device_token;
     }

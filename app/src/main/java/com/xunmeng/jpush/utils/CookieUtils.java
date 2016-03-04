@@ -18,7 +18,7 @@ public class CookieUtils {
         CookieManager cookieManager = CookieManager.getInstance();
         cookieManager.setAcceptCookie(true);
         cookieManager.removeSessionCookie();//移除
-        String cookies = PreferencesUtils.shareInstance(context).getCookies();
+        String cookies = PreferencesUtils.shareInstance().getCookies();
         LogUtils.d("synCookies cookies = " + cookies);
 //        cookieManager.setCookie(PDDConfig.getApiDomain(), cookies);
         cookieManager.setCookie(url, cookies);
@@ -46,7 +46,7 @@ public class CookieUtils {
     }
 
     public static String getAPICookies(Context context) {
-        String apiCookies = PreferencesUtils.shareInstance(context).getCookies();
+        String apiCookies = PreferencesUtils.shareInstance().getCookies();
         LogUtils.d("apiCookies = " + apiCookies);
         return apiCookies;
     }

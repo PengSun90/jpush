@@ -2,7 +2,22 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 22
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '22.0.1'
+
+    signingConfigs {
+        release {
+            keyAlias 'jpush'
+            keyPassword 'jing@1022'
+            storeFile file('./jpush.jks')
+            storePassword 'jing@1022'
+        }
+//        config {
+//            keyAlias 'xunmeng'
+//            keyPassword '62239a9166f3ada75a10100d52b28760'
+//            storeFile file('./pinduoduo.jks')
+//            storePassword '62239a9166f3ada75a10100d52b28760'
+//        }
+    }
 
     defaultConfig {
         applicationId "com.xunmeng.jpush"
@@ -10,6 +25,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
@@ -28,10 +44,12 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:appcompat-v7:22.1.0'
     compile 'com.android.support:design:22.2.1'
     compile files('libs/jpush-android-2.0.6.jar')
     compile files('libs/gson-2.3.1.jar')
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile files('libs/umeng-analytics-v5.6.4.jar')
+    compile files('libs/baidumapapi_v3_5_0.jar')
+    compile files('libs/locSDK_6.13.jar')
 }

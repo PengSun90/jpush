@@ -3,6 +3,8 @@ package com.xunmeng.jpush.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.xunmeng.jpush.app.MY;
+
 
 /**
  * Created by YCY on 15/6/10.
@@ -53,12 +55,12 @@ public class PreferencesUtils {
     private PreferencesUtils() {
     }
 
-    public static synchronized PreferencesUtils shareInstance(Context context) {
+    public static synchronized PreferencesUtils shareInstance() {
         if (null == mInstance) {
             mInstance = new PreferencesUtils();
             try {
-                mInstance.mSp = context.getSharedPreferences(
-                        context.getPackageName(), Context.MODE_PRIVATE);
+                mInstance.mSp = MY.getAppInstance().getSharedPreferences(
+                        MY.getAppInstance().getPackageName(), Context.MODE_PRIVATE);
             } catch (Exception e) {
                 e.printStackTrace();
             }

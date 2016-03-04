@@ -92,7 +92,7 @@ public class VolleyManager {
                         String rawCookies = responseHeaders.get("Set-Cookie");
                         LogUtils.d("rawCookies = " + rawCookies);
                         if (!TextUtils.isEmpty(rawCookies))
-                            PreferencesUtils.shareInstance(context).writeCookies(rawCookies);
+                            PreferencesUtils.shareInstance().writeCookies(rawCookies);
 
                         LogUtils.d("response " + response.toString());
                     } catch (Exception e) {
@@ -132,7 +132,7 @@ public class VolleyManager {
                         String rawCookies = responseHeaders.get("Set-Cookie");
                         LogUtils.d("rawCookies = " + rawCookies);
                         if (!TextUtils.isEmpty(rawCookies))
-                            PreferencesUtils.shareInstance(context).writeCookies(rawCookies);
+                            PreferencesUtils.shareInstance().writeCookies(rawCookies);
 
                         LogUtils.d("response " + response.toString());
                     } catch (Exception e) {
@@ -185,7 +185,7 @@ public class VolleyManager {
                         String rawCookies = responseHeaders.get("Set-Cookie");
                         LogUtils.d("rawCookies = " + rawCookies);
                         if (!TextUtils.isEmpty(rawCookies))
-                            PreferencesUtils.shareInstance(context).writeCookies(rawCookies);
+                            PreferencesUtils.shareInstance().writeCookies(rawCookies);
 
                         LogUtils.d("response " + response.toString());
                     } catch (Exception e) {
