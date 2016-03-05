@@ -1,4 +1,4 @@
-package com.xunmeng.jpush;
+package com.xunmeng.jpush.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.entity.MainDrawerMenu;
 
 import java.util.List;

@@ -4,10 +4,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <com.viewpagerindicator.TabPageIndicator
+        android:id="@+id/news_indicator"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue" />
+        style="@style/Widget.TabPageIndicator"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/news_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
 
 
 </LinearLayout>

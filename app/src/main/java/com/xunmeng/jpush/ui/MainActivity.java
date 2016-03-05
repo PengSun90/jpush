@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.xunmeng.jpush.LeftAdapter;
+import com.xunmeng.jpush.adapter.LeftAdapter;
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.entity.MainDrawerMenu;
 import com.xunmeng.jpush.fragment.FindFragment;
