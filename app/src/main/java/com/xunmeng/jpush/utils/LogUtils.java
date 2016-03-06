@@ -23,11 +23,20 @@ public class LogUtils {
     }
 
     /**
+     * 以级别为 v 的形式输出LOG
+     */
+    public static void v(String msg) {
+        if (isDebug) {
+            Log.d(_FILE_(), getLineMethod() + " " + msg);
+        }
+    }
+
+    /**
      * 以级别为 d 的形式输出LOG
      */
     public static void d(String mTag, String msg) {
         if (isDebug) {
-            Log.d(_FILE_(), getLineMethod() + " " + msg);
+            Log.d(mTag, "" + msg);
         }
     }
 
@@ -50,6 +59,18 @@ public class LogUtils {
             Log.i(mTag, "" + msg);
         }
     }
+
+    /**
+     * 默认带上文件和行数信息
+     *
+     * @param msg
+     */
+    public static void i(String msg) {
+        if (isDebug) {
+            Log.d(_FILE_(), getLineMethod() + " " + msg);
+        }
+    }
+
 
     /**
      * 以级别为 w 的形式输出LOG
@@ -86,6 +107,16 @@ public class LogUtils {
             Log.e(mTag, "" + msg);
         }
     }
+
+    /**
+     * 以级别为 e 的形式输出LOG
+     */
+    public static void e(String msg) {
+        if (isDebug) {
+            Log.e(_FILE_(), getLineMethod()+"" + msg);
+        }
+    }
+
 
     /**
      * 以级别为 e 的形式输出Throwable
