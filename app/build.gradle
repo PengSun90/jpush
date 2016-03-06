@@ -52,6 +52,7 @@ dependencies {
     compile files('libs/umeng-analytics-v5.6.4.jar')
     compile files('libs/baidumapapi_v3_5_0.jar')
     compile files('libs/locSDK_6.13.jar')
-//    compile 'com.viewpagerindicator:library:2.4.1'
+    //    compile 'com.viewpagerindicator:library:2.4.1'
     compile 'com.viewpagerindicator:library:2.4.1@aar'
+    compile files('libs/nineoldandroids-library-2.4.0.jar')
 }

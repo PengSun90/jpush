@@ -56,7 +56,7 @@ public class NewFragment extends Basefragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.new_frg_ll, container, false);
+        View view = inflater.inflate(R.layout.news_frg_ll, container, false);
 //        Toast.makeText(activity, activity.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
 
         FragmentPagerAdapter adapter = new WYNewsAdapter(activity.getSupportFragmentManager());

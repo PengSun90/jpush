@@ -40,5 +40,4 @@
         <item name="android:textColor">@drawable/selector_tabtext</item>
     </style>
 
-
 </resources>
