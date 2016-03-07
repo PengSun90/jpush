@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="55dp"
     android:background="@drawable/biz_reward_tab_selected"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/news"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:id="@+id/news"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/news_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/news" />
+            android:clickable="true"
+            android:src="@drawable/news_blue" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,16 +28,17 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/read"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:id="@+id/read"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:id="@+id/read_icon"
             android:src="@drawable/read" />
 
         <TextView
@@ -46,16 +49,17 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/video"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:id="@+id/video"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:id="@+id/video_icon"
             android:src="@drawable/video" />
 
         <TextView
@@ -66,14 +70,15 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/find"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:id="@+id/find"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/find_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/find" />

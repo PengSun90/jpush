@@ -6,7 +6,6 @@ import android.app.Application;
 import com.umeng.analytics.MobclickAgent;
 import com.xunmeng.jpush.utils.JPushUtils;
 import com.xunmeng.jpush.utils.LocationManager;
-import com.xunmeng.jpush.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;

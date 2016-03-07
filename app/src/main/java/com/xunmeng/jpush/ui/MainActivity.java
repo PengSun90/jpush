@@ -16,13 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.xunmeng.jpush.adapter.LeftAdapter;
 import com.xunmeng.jpush.R;
+import com.xunmeng.jpush.adapter.LeftAdapter;
 import com.xunmeng.jpush.entity.MainDrawerMenu;
 import com.xunmeng.jpush.fragment.FindFragment;
 import com.xunmeng.jpush.fragment.NewFragment;
 import com.xunmeng.jpush.fragment.ReadFragment;
 import com.xunmeng.jpush.fragment.VideoFragment;
+import com.xunmeng.jpush.utils.LogUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private ListView list_found;
     private LinearLayout about_me;
     private LinearLayout setting;
+    private ImageView new_img;
+    private ImageView read_icon;
+    private ImageView video_icon;
+    private ImageView find_icon;
+    private final int newsFlag = 0;
+    private final int readFlag = 1;
+    private final int videoFlag = 2;
+    private final int findFlag = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +66,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     }
 
-
     private void initUi() {
         initToolbar();
         head_icon = (ImageView) findViewById(R.id.icon_view);
@@ -67,10 +75,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         list_found.setAdapter(new LeftAdapter(this, getMenuItem()));
         list_found.setOnItemClickListener(this);
 
-        about_me = (LinearLayout)findViewById(R.id.about_me);
+        about_me = (LinearLayout) findViewById(R.id.about_me);
         about_me.setOnClickListener(this);
 
-        setting = (LinearLayout)findViewById(R.id.setting);
+        setting = (LinearLayout) findViewById(R.id.setting);
         setting.setOnClickListener(this);
 
     }
@@ -92,15 +100,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         news = (LinearLayout) findViewById(R.id.news);
         news.setOnClickListener(this);
 
+        new_img = (ImageView) findViewById(R.id.news_icon);
+        new_img.setOnClickListener(this);
+
         read = (LinearLayout) findViewById(R.id.read);
         read.setOnClickListener(this);
+
+        read_icon = (ImageView) findViewById(R.id.read_icon);
+        read_icon.setOnClickListener(this);
+
 
         video = (LinearLayout) findViewById(R.id.video);
         video.setOnClickListener(this);
 
+        video_icon = (ImageView) findViewById(R.id.video_icon);
+        video_icon.setOnClickListener(this);
+
         find = (LinearLayout) findViewById(R.id.find);
         find.setOnClickListener(this);
 
+        find_icon = (ImageView) findViewById(R.id.find_icon);
+        find_icon.setOnClickListener(this);
     }
 
     /**
@@ -131,54 +151,90 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         fragmentTransaction.add(R.id.frame_content, newFragment);
         currentFragment = newFragment;
         fragmentTransaction.commit();
+        new_img.setImageResource(R.drawable.news_blue);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.news:
+                select(newsFlag);
+                break;
+            case R.id.read:
+                select(readFlag);
+                break;
+            case R.id.video:
+                select(videoFlag);
+                break;
+            case R.id.find:
+                select(findFlag);
+                break;
+            case R.id.icon_view:
+                LogUtils.e("icon_view");
+                Toast.makeText(MainActivity.this, "登录", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.about_me:
+                LogUtils.e("about_me");
+                break;
+            case R.id.setting:
+                LogUtils.e("setting");
+                Toast.makeText(MainActivity.this, "设置", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void select(int i) {
+        reFreshUi();
+        switch (i) {
+            case newsFlag:
                 if (newFragment == null) {
                     newFragment = NewFragment.getInstance();
                 }
                 // 使用当前Fragment的布局替代id_content的控件
                 switchContent(currentFragment, newFragment);
+                new_img.setImageResource(R.drawable.news_blue);
                 break;
-            case R.id.read:
+            case readFlag:
                 if (readFragment == null) {
                     readFragment = ReadFragment.getInstance();
                 }
                 // 使用当前Fragment的布局替代id_content的控件
                 switchContent(currentFragment, readFragment);
+                read_icon.setImageResource(R.drawable.news_blue);
                 break;
-            case R.id.video:
+            case videoFlag:
                 if (videoFragment == null) {
                     videoFragment = VideoFragment.getInstance();
                 }
                 // 使用当前Fragment的布局替代id_content的控件
                 switchContent(currentFragment, videoFragment);
+                video_icon.setImageResource(R.drawable.news_blue);
                 break;
-            case R.id.find:
+            case findFlag:
                 if (findFragment == null) {
                     findFragment = FindFragment.getInstance();
                 }
                 // 使用当前Fragment的布局替代id_content的控件
                 switchContent(currentFragment, findFragment);
+                find_icon.setImageResource(R.drawable.news_blue);
                 break;
-            case R.id.icon_view:
-                Toast.makeText(MainActivity.this,"登录",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.about_me:
-                Toast.makeText(MainActivity.this,"关于我",Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.setting:
-                Toast.makeText(MainActivity.this,"设置",Toast.LENGTH_SHORT).show();
+            default:
                 break;
         }
     }
 
+    private void reFreshUi() {
+        new_img.setImageResource(R.drawable.news_gray);
+        video_icon.setImageResource(R.drawable.news_gray);
+        find_icon.setImageResource(R.drawable.news_gray);
+        read_icon.setImageResource(R.drawable.news_gray);
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(MainActivity.this,String.valueOf(position) +"  "+ String.valueOf(id),Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, String.valueOf(position) + "  " + String.valueOf(id), Toast.LENGTH_SHORT).show();
     }
 
 
@@ -203,6 +259,5 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         }
     }
-
 
 }
