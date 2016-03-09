@@ -39,7 +39,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:id="@+id/read_icon"
-            android:src="@drawable/read" />
+            android:src="@drawable/read_unselect" />
 
         <TextView
             android:layout_width="wrap_content"

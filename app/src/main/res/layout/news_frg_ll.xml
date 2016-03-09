@@ -5,10 +5,10 @@
     android:orientation="vertical">
 
 
-    <com.xunmeng.jpush.widget.CustomSwipeRefreshLayout
-        android:id="@+id/swipeRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<com.xunmeng.jpush.widget.CustomSwipeRefreshLayout-->
+        <!--android:id="@+id/swipeRefresh"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -27,6 +27,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="1" />
         </LinearLayout>
-    </com.xunmeng.jpush.widget.CustomSwipeRefreshLayout>
+    <!--</com.xunmeng.jpush.widget.CustomSwipeRefreshLayout>-->
 
 </LinearLayout>

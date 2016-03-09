@@ -5,11 +5,12 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="17" />
+
     <permission
         android:name="com.xunmeng.jpush.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
 
-    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <!-- Required  一些系统要求的权限，如访问网络等 -->
     <uses-permission android:name="com.xunmeng.jpush.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -24,7 +25,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!--百度定位SDK-->
+    <!-- 百度定位SDK -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
@@ -41,12 +42,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <!--友盟-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <!-- 友盟 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".app.MY"
@@ -55,11 +55,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <!-- meta-data需要写在application中 -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="hequmVv7bDrX5pHhGHWN53q9" />
-
 
         <activity
             android:name=".ui.SplashActivity"
@@ -67,11 +67,10 @@
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/app_name"
@@ -81,7 +80,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK核心功能 -->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
@@ -94,13 +93,13 @@
                 <category android:name="com.xunmeng.jpush" />
             </intent-filter>
         </activity>
-        <!-- Required  SDK核心功能-->
+        <!-- Required  SDK核心功能 -->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
-        <!-- Required SDK 核心功能-->
+        <!-- Required SDK 核心功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
@@ -120,18 +119,19 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
+
                 <category android:name="com.xunmeng.jpush" />
             </intent-filter>
         </service>
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <!--Required  显示通知栏 -->
+                <!-- Required  显示通知栏 -->
                 <category android:name="com.xunmeng.jpush" />
             </intent-filter>
             <intent-filter>
@@ -145,38 +145,35 @@
 
                 <data android:scheme="package" />
             </intent-filter>
-
         </receiver>
 
-
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.AlarmReceiver"
             android:exported="false" />
 
-        <!-- User defined.  For test only  用户自定义的广播接收器-->
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
         <receiver
             android:name=".receiver.MyReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
-                <!--Required  用户注册SDK的intent-->
+                <!-- Required  用户注册SDK的intent -->
                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
                 <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
-                <!--Required  用户接收SDK消息的intent-->
+                <!-- Required  用户接收SDK消息的intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
-                <!--Required  用户接收SDK通知栏信息的intent-->
+                <!-- Required  用户接收SDK通知栏信息的intent -->
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
-                <!--Required  用户打开自定义通知栏的intent-->
+                <!-- Required  用户打开自定义通知栏的intent -->
                 <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
-                <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
                 <action android:name="cn.jpush.android.intent.CONNECTION" />
                 <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                 <category android:name="com.xunmeng.jpush" />
             </intent-filter>
         </receiver>
-
 
         <!-- Required  . Enable it you can get statistics data with channel -->
         <meta-data
@@ -185,24 +182,27 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="3c00c4abcf5fea7350d2f433" />
-        <!--  </>值来自开发者平台取得的AppKey-->
+        <!-- </>值来自开发者平台取得的AppKey -->
 
-        <!--友盟-->
+
+        <!-- 友盟 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="56d6e73fe0f55a3de00002c3"></meta-data>
-
+            android:value="56d6e73fe0f55a3de00002c3" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="zidingyi"></meta-data>
+            android:value="zidingyi" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote">
             <intent-filter>
-                <action android:name="com.baidu.location.service_v2.2"/>
+                <action android:name="com.baidu.location.service_v2.2" />
             </intent-filter>
         </service>
+
+        <activity android:name=".ui.LoginActivity"></activity>
+        <activity android:name=".ui.AboutMeActivity" />
     </application>
 </manifest>

@@ -17,7 +17,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
-        MY.getAppInstance().addActivity(this);
+//        MY.getAppInstance().addActivity(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override

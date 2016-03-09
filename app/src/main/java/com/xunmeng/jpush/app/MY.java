@@ -3,6 +3,8 @@ package com.xunmeng.jpush.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 import com.xunmeng.jpush.utils.JPushUtils;
 import com.xunmeng.jpush.utils.LocationManager;
@@ -19,6 +21,7 @@ public class MY extends Application {
     private static MY my;
     private LocationManager locationManager;
     private List<Activity> activityList = new ArrayList<Activity>();
+    private RefWatcher mRefWatcher;
 
     @Override
     public void onCreate() {
@@ -28,19 +31,32 @@ public class MY extends Application {
 
         startLocation();
 
+        mRefWatcher = LeakCanary.install(this);
+
         initUmengAnalysis();
 
         JPushUtils.JPushInterfaceInit(this);
 
     }
 
+    public static synchronized MY getAppInstance() {
+        return my;
+    }
+
+    /**
+     * 获取内存监控
+     *
+     * @param
+     * @return
+     */
+    private RefWatcher getRefWatcher() {
+
+        return mRefWatcher;
+    }
+
 
     private void initUmengAnalysis() {
         MobclickAgent.openActivityDurationTrack(false);
-    }
-
-    public static synchronized MY getAppInstance() {
-        return my;
     }
 
     public void startLocation() {

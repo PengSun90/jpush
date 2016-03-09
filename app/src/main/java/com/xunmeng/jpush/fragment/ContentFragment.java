@@ -6,10 +6,15 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.jazzViewPagerAdapter;
+import com.xunmeng.jpush.adapter.newsListView;
 import com.xunmeng.jpush.widget.jazzViewPager.JazzyViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/3/5.
@@ -42,6 +47,7 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
 
     };
     private Activity activity;
+    private ListView listView;
 
     public static ContentFragment newInstance(String content) {
         ContentFragment fragment = new ContentFragment();
@@ -97,6 +103,23 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
     private void initUi() {
         initJazzyViewPager();
 
+        // TODO: 2016/3/7 test;
+
+        List<String> list = new ArrayList<>();
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        list.add("aaa");
+        listView = (ListView)view.findViewById(R.id.news_listview);
+        listView.setAdapter(new newsListView(activity,list));
+
     }
 
     private void initJazzyViewPager() {
@@ -107,6 +130,8 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         jazzyViewPager.setAdapter(new jazzViewPagerAdapter(activity,/* 加图片路径*/ null));
         jazzyViewPager.setCurrentItem(0);
         mHandler.sendEmptyMessageDelayed(MSG_CHANGE_PHOTO, PHOTO_CHANGE_TIME);
+
+
     }
 
 

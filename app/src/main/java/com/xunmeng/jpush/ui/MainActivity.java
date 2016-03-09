@@ -1,5 +1,6 @@
 package com.xunmeng.jpush.ui;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.LeftAdapter;
+import com.xunmeng.jpush.app.MY;
 import com.xunmeng.jpush.entity.MainDrawerMenu;
 import com.xunmeng.jpush.fragment.FindFragment;
 import com.xunmeng.jpush.fragment.NewFragment;
@@ -63,6 +66,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         setContentView(R.layout.main);
         initUi();
         setDefaultFragment();
+        MY.getAppInstance().addActivity(this);
 
     }
 
@@ -85,8 +89,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private void initToolbar() {
         toolbar = (Toolbar) findViewById(R.id.tb_main);
-        toolbar.setTitle("Toolbar");//设置Toolbar标题
+        toolbar.setTitle("天道酬勤");//设置Toolbar标题
         toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
+//        toolbar.setLogo(R.drawable.);
+//        toolbar.setLogo(R.drawable.ic_launcher); //设置logo
+//        toolbar.setBackgroundColor(getResources().getColor(R.color.grey)); //设置背景颜色
+//        toolbar.setSubtitle("副标题"); //设置副标题
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -101,26 +110,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         news.setOnClickListener(this);
 
         new_img = (ImageView) findViewById(R.id.news_icon);
-        new_img.setOnClickListener(this);
+//        new_img.setOnClickListener(this);
 
         read = (LinearLayout) findViewById(R.id.read);
         read.setOnClickListener(this);
 
         read_icon = (ImageView) findViewById(R.id.read_icon);
-        read_icon.setOnClickListener(this);
+//        read_icon.setOnClickListener(this);
 
 
         video = (LinearLayout) findViewById(R.id.video);
         video.setOnClickListener(this);
 
         video_icon = (ImageView) findViewById(R.id.video_icon);
-        video_icon.setOnClickListener(this);
+//        video_icon.setOnClickListener(this);
 
         find = (LinearLayout) findViewById(R.id.find);
         find.setOnClickListener(this);
 
         find_icon = (ImageView) findViewById(R.id.find_icon);
-        find_icon.setOnClickListener(this);
+//        find_icon.setOnClickListener(this);
     }
 
     /**
@@ -170,6 +179,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 select(findFlag);
                 break;
             case R.id.icon_view:
+                Intent intent = new Intent(this, LoginActivity.class);
+                this.startActivity(intent);
                 LogUtils.e("icon_view");
                 Toast.makeText(MainActivity.this, "登录", Toast.LENGTH_SHORT).show();
                 break;
@@ -202,7 +213,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 }
                 // 使用当前Fragment的布局替代id_content的控件
                 switchContent(currentFragment, readFragment);
-                read_icon.setImageResource(R.drawable.news_blue);
+                read_icon.setImageResource(R.drawable.read_select);
                 break;
             case videoFlag:
                 if (videoFragment == null) {
@@ -227,16 +238,45 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private void reFreshUi() {
         new_img.setImageResource(R.drawable.news_gray);
+        read_icon.setImageResource(R.drawable.read_unselect);
         video_icon.setImageResource(R.drawable.news_gray);
         find_icon.setImageResource(R.drawable.news_gray);
-        read_icon.setImageResource(R.drawable.news_gray);
+
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(MainActivity.this, String.valueOf(position) + "  " + String.valueOf(id), Toast.LENGTH_SHORT).show();
+        switch(position){
+            case 0:
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+                break;
+        }
     }
 
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        int id = item.getItemId();
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//    }
+
+    @Override
+    public void onBackPressed() {
+        if(mDrawerLayout.isDrawerOpen(Gravity.LEFT )){
+            mDrawerLayout.closeDrawer(Gravity.LEFT);
+        }else{
+//            super.onBackPressed();
+            Toast.makeText(this,"test",Toast.LENGTH_SHORT).show();
+        }
+    }
 
     /**
      * 当fragment进行切换时，采用隐藏与显示的方法加载fragment以防止数据的重复加载

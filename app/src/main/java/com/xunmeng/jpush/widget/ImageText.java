@@ -35,6 +35,7 @@ public class ImageText extends LinearLayout {
         super(context, attrs);
         // TODO Auto-generated constructor stub
         mContext = context;
+
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View parentView = inflater.inflate(R.layout.img_tv_ly, this, true);
         mImageView = (ImageView)findViewById(R.id.image_iamge_text);

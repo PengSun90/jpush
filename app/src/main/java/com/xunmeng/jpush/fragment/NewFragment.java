@@ -2,8 +2,6 @@ package com.xunmeng.jpush.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.viewpagerindicator.TabPageIndicator;
 import com.xunmeng.jpush.R;
+import com.xunmeng.jpush.adapter.viewPagerFragmentAdapter;
 import com.xunmeng.jpush.utils.LogUtils;
 
 /**
@@ -57,9 +56,10 @@ public class NewFragment extends Basefragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.news_frg_ll, container, false);
-//        Toast.makeText(activity, activity.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+//      Toast.makeText(activity, activity.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
 
-        FragmentPagerAdapter adapter = new WYNewsAdapter(activity.getSupportFragmentManager());
+        FragmentPagerAdapter adapter = new viewPagerFragmentAdapter(activity,activity.getSupportFragmentManager());
+
         ViewPager news_pager = (ViewPager) view.findViewById(R.id.news_pager);
         news_pager.setAdapter(adapter);
 
@@ -70,28 +70,6 @@ public class NewFragment extends Basefragment {
 
     }
 
-    class WYNewsAdapter extends FragmentPagerAdapter {
 
-        String[] CONTENT = new String[]{"头条", "娱乐", "体育", "财经", "科技", "汽车", "NBA","中国","美国","日本","头条", "娱乐", "体育", "财经", "科技", "汽车", "NBA","中国","美国","日本"};
-
-        public WYNewsAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return ContentFragment.newInstance(CONTENT[position % CONTENT.length]);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return CONTENT[position % CONTENT.length].toUpperCase();
-        }
-
-        @Override
-        public int getCount() {
-            return CONTENT.length;
-        }
-    }
 
 }

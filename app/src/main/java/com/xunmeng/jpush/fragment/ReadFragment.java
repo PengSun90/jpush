@@ -17,10 +17,6 @@ public class ReadFragment extends Basefragment {
     private static String KEY_TITLE = "key_yitle";
     private static ReadFragment fragment;
 
-    private ReadFragment() {
-
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -33,4 +33,16 @@
         <item>Accordion</item>
     </string-array>
 
+
+    <string-array name="news_title">
+        <item>头条</item>
+        <item>娱乐</item>
+        <item>体育</item>
+        <item>财经</item>
+        <item>科技</item>
+        <item>汽车</item>
+        <item>NBA</item>
+        <item>糗百</item>
+    </string-array>
+
 </resources>
