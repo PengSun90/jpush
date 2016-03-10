@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.jazzViewPagerAdapter;
@@ -20,7 +21,7 @@ import java.util.List;
  * Created by Administrator on 2016/3/5.
  */
 
-public final class ContentFragment extends Basefragment implements View.OnClickListener {
+public final class ContentFragment extends Basefragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     private static final String KEY_CONTENT = "TestFragment:Content";
     private View view;
     private JazzyViewPager jazzyViewPager;
@@ -135,6 +136,8 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         } else {
             newsListViewAdapter.updataList(list);
         }
+
+        listView.setOnItemClickListener(this);
     }
 
     private void initJazzyViewPager() {
@@ -152,6 +155,11 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
 }

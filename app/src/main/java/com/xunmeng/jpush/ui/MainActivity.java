@@ -91,7 +91,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         toolbar = (Toolbar) findViewById(R.id.tb_main);
         toolbar.setTitle("天道酬勤");//设置Toolbar标题
         toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
-//        toolbar.setIndicator.
 //        toolbar.setLogo(R.drawable.);
 //        toolbar.setLogo(R.drawable.ic_launcher); //设置logo
 //        toolbar.setBackgroundColor(getResources().getColor(R.color.grey)); //设置背景颜色
@@ -100,6 +99,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_list_white);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open,
@@ -180,12 +180,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 select(findFlag);
                 break;
             case R.id.icon_view:
-                Intent intent = new Intent(this, LoginActivity.class);
-                this.startActivity(intent);
+                Intent LoginIntent = new Intent(this, LoginActivity.class);
+                this.startActivity(LoginIntent);
                 LogUtils.e("icon_view");
                 Toast.makeText(MainActivity.this, "登录", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.about_me:
+                Intent aboutMeIntent = new Intent(this, AboutMeActivity.class);
+                this.startActivity(aboutMeIntent);
                 LogUtils.e("about_me");
                 break;
             case R.id.setting:
@@ -248,7 +250,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(MainActivity.this, String.valueOf(position) + "  " + String.valueOf(id), Toast.LENGTH_SHORT).show();
-        switch(position){
+        switch (position) {
             case 0:
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
@@ -271,11 +273,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onBackPressed() {
-        if(mDrawerLayout.isDrawerOpen(Gravity.LEFT )){
+        if (mDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
             mDrawerLayout.closeDrawer(Gravity.LEFT);
-        }else{
+        } else {
 //            super.onBackPressed();
-            Toast.makeText(this,"test",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
         }
     }
 
