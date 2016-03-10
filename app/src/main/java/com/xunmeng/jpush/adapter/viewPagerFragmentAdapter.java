@@ -6,7 +6,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.xunmeng.jpush.R;
+import com.xunmeng.jpush.fragment.BaseAbcFragment;
 import com.xunmeng.jpush.fragment.ContentFragment;
+
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/3/7.
@@ -14,14 +17,32 @@ import com.xunmeng.jpush.fragment.ContentFragment;
 public class viewPagerFragmentAdapter extends FragmentPagerAdapter {
 
 
+    private final List<BaseAbcFragment> mFragments;
+    private final List<String> mTitles;
     private Context mcontext = null;
     private String[] CONTENT;
+    private FragmentManager mFragmentManager;
+
+    /**
+     * 更新频道，前面固定的不更新，后面一律更新
+     *
+     * @param fragments
+     * @param titles
+     */
+    public void updateFragments(List<BaseAbcFragment> fragments, List<String> titles) {
+        this.mFragments.addAll(fragments);
+        this.mTitles.addAll(titles);
+        notifyDataSetChanged();
+    }
 
 
-    public viewPagerFragmentAdapter(Context context, FragmentManager fm) {
+    public viewPagerFragmentAdapter(Context context, FragmentManager fm ,List<BaseAbcFragment> fragments, List<String> titles) {
         super(fm);
         this.mcontext = context;
-        CONTENT = mcontext.getResources().getStringArray(R.array.news_title);
+        this.mFragmentManager = fm;
+        this.mFragments = fragments;
+        this.mTitles = titles;
+        CONTENT = context.getResources().getStringArray(R.array.news_title);
     }
 
     @Override

@@ -6,12 +6,12 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.jazzViewPagerAdapter;
-import com.xunmeng.jpush.adapter.newsListView;
+import com.xunmeng.jpush.adapter.newsListViewAdapter;
 import com.xunmeng.jpush.widget.jazzViewPager.JazzyViewPager;
+import com.xunmeng.jpush.widget.xListView.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +47,7 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
 
     };
     private Activity activity;
-    private ListView listView;
+    private XListView listView;
 
     public static ContentFragment newInstance(String content) {
         ContentFragment fragment = new ContentFragment();
@@ -100,6 +100,8 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         return view;
     }
 
+    private newsListViewAdapter newsListViewAdapter;
+
     private void initUi() {
         initJazzyViewPager();
 
@@ -108,18 +110,31 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         List<String> list = new ArrayList<>();
         list.add("aaa");
         list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        list.add("aaa");
-        listView = (ListView)view.findViewById(R.id.news_listview);
-        listView.setAdapter(new newsListView(activity,list));
+        listView = (XListView) view.findViewById(R.id.news_listview);
+        newsListViewAdapter = (newsListViewAdapter) listView.getAdapter();
+        if (newsListViewAdapter == null) {
+            newsListViewAdapter = new newsListViewAdapter(activity, list);
+            listView.setAdapter(new newsListViewAdapter(activity, list));
+            listView.setXListViewListener(new XListView.IXListViewListener() {
+                @Override
+                public void onRefresh() {
+                    List<String> list = new ArrayList<>();
+                    list.add("aaa");
+                    list.add("aaa");
+                    list.add("aaa");
+                    list.add("aaa");
+                    newsListViewAdapter.updataList(list);
+                    listView.stopRefresh();
+                }
 
+                @Override
+                public void onLoadMore() {
+
+                }
+            });
+        } else {
+            newsListViewAdapter.updataList(list);
+        }
     }
 
     private void initJazzyViewPager() {

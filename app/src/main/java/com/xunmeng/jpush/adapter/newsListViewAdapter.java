@@ -1,26 +1,35 @@
 package com.xunmeng.jpush.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
+import com.xunmeng.jpush.R;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/3/7.
  */
-public class newsListView extends BaseAdapter {
+public class newsListViewAdapter extends BaseAdapter {
 
 
-    private final Context context;
-    private final List<String> list;
+    private Context context;
+    private List<String> list = new ArrayList<>();
 
-    public newsListView(Context context, List<String> list) {
+    public newsListViewAdapter(Context context, List<String> list) {
         this.context = context;
         this.list = list;
+    }
+
+    public void updataList(List<String> listUpdata) {
+        if (listUpdata != null) {
+            list.addAll(listUpdata);
+            notifyDataSetChanged();
+        }
     }
 
     @Override
@@ -41,10 +50,9 @@ public class newsListView extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        TextView textView = new TextView(context);
-        AbsListView.LayoutParams layoutParams = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.MATCH_PARENT);
-        textView.setLayoutParams(layoutParams);
-        textView.setText(list.get(position));
-        return textView;
+        View view = LayoutInflater.from(context).inflate(R.layout.news_item, null);
+
+        convertView = view;
+        return convertView;
     }
 }

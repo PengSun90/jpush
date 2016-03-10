@@ -16,11 +16,11 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/3/4.
  */
-public class LeftAdapter extends BaseAdapter{
+public class LeftAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private List<MainDrawerMenu> list_menu;                   //菜单名称与图标的list,采用了一个类
 
-    public LeftAdapter(Context context,List<MainDrawerMenu> list_menu) {
+    public LeftAdapter(Context context, List<MainDrawerMenu> list_menu) {
         inflater = LayoutInflater.from(context);
         this.list_menu = list_menu;
     }
@@ -44,15 +44,14 @@ public class LeftAdapter extends BaseAdapter{
     public View getView(int position, View convertView, ViewGroup parent) {
 
         ViewHolder viewHolder;
-        if(convertView==null)
-        {
-            convertView = inflater.inflate(R.layout.main_drawer_item,null);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.main_drawer_item, null);
             viewHolder = new ViewHolder();
-            viewHolder.icon = (ImageView)convertView.findViewById(R.id.item_icon);
-            viewHolder.title = (TextView)convertView.findViewById(R.id.item_title);
+            viewHolder.icon = (ImageView) convertView.findViewById(R.id.item_icon);
+            viewHolder.title = (TextView) convertView.findViewById(R.id.item_title);
             convertView.setTag(viewHolder);
-        }else{
-            viewHolder = (ViewHolder)convertView.getTag();
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         viewHolder.icon.setImageResource(list_menu.get(position).getMainDrawer_icon());
@@ -60,8 +59,7 @@ public class LeftAdapter extends BaseAdapter{
         return convertView;
     }
 
-    public class ViewHolder
-    {
+    public class ViewHolder {
         ImageView icon;
         TextView title;
     }

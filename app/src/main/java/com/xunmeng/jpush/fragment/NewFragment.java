@@ -58,18 +58,27 @@ public class NewFragment extends Basefragment {
         View view = inflater.inflate(R.layout.news_frg_ll, container, false);
 //      Toast.makeText(activity, activity.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
 
-        FragmentPagerAdapter adapter = new viewPagerFragmentAdapter(activity,activity.getSupportFragmentManager());
-
         ViewPager news_pager = (ViewPager) view.findViewById(R.id.news_pager);
-        news_pager.setAdapter(adapter);
+
+        if (news_pager.getAdapter() == null) {
+
+            FragmentPagerAdapter adapter = new viewPagerFragmentAdapter(activity, activity.getSupportFragmentManager(), null, null);
+
+            news_pager.setAdapter(adapter);
+        } else {
+
+            viewPagerFragmentAdapter viewPagerFragmentAdapter = (viewPagerFragmentAdapter) news_pager.getAdapter();
+
+            viewPagerFragmentAdapter.updateFragments(null, null);
+        }
 
         TabPageIndicator indicator = (TabPageIndicator) view.findViewById(R.id.news_indicator);
+
         indicator.setViewPager(news_pager);
 
         return view;
 
     }
-
 
 
 }

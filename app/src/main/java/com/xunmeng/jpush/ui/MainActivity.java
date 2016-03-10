@@ -91,6 +91,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         toolbar = (Toolbar) findViewById(R.id.tb_main);
         toolbar.setTitle("天道酬勤");//设置Toolbar标题
         toolbar.setTitleTextColor(Color.parseColor("#ffffff")); //设置标题颜色
+//        toolbar.setIndicator.
 //        toolbar.setLogo(R.drawable.);
 //        toolbar.setLogo(R.drawable.ic_launcher); //设置logo
 //        toolbar.setBackgroundColor(getResources().getColor(R.color.grey)); //设置背景颜色
