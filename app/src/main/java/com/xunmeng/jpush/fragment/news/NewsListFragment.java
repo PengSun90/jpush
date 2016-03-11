@@ -1,6 +1,7 @@
-package com.xunmeng.jpush.fragment;
+package com.xunmeng.jpush.fragment.news;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -9,19 +10,20 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.xunmeng.jpush.R;
-import com.xunmeng.jpush.adapter.jazzViewPagerAdapter;
-import com.xunmeng.jpush.adapter.newsListViewAdapter;
+import com.xunmeng.jpush.adapter.NewsListViewAdapter;
+import com.xunmeng.jpush.adapter.JazzViewPagerAdapter;
+import com.xunmeng.jpush.fragment.Basefragment;
+import com.xunmeng.jpush.ui.NewsDeatileActivity;
 import com.xunmeng.jpush.widget.jazzViewPager.JazzyViewPager;
 import com.xunmeng.jpush.widget.xListView.XListView;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
- * Created by Administrator on 2016/3/5.
+ * Created by Administrator on 2016/3/9.
  */
 
-public final class ContentFragment extends Basefragment implements View.OnClickListener, AdapterView.OnItemClickListener {
+public  class NewsListFragment extends Basefragment implements View.OnClickListener, AdapterView.OnItemClickListener {
     private static final String KEY_CONTENT = "TestFragment:Content";
     private View view;
     private JazzyViewPager jazzyViewPager;
@@ -50,15 +52,15 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
     private Activity activity;
     private XListView listView;
 
-    public static ContentFragment newInstance(String content) {
-        ContentFragment fragment = new ContentFragment();
+    public static NewsListFragment newInstance() {
+        NewsListFragment fragment = new NewsListFragment();
 
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            builder.append(content).append(" ");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        fragment.mContent = builder.toString();
+//        StringBuilder builder = new StringBuilder();
+//        for (int i = 0; i < 10; i++) {
+//            builder.append(content).append(" ");
+//        }
+//        builder.deleteCharAt(builder.length() - 1);
+//        fragment.mContent = builder.toString();
 
         return fragment;
     }
@@ -101,7 +103,7 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         return view;
     }
 
-    private newsListViewAdapter newsListViewAdapter;
+    private NewsListViewAdapter newsListViewAdapter;
 
     private void initUi() {
         initJazzyViewPager();
@@ -112,10 +114,10 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         list.add("aaa");
         list.add("aaa");
         listView = (XListView) view.findViewById(R.id.news_listview);
-        newsListViewAdapter = (newsListViewAdapter) listView.getAdapter();
+        newsListViewAdapter = (NewsListViewAdapter) listView.getAdapter();
         if (newsListViewAdapter == null) {
-            newsListViewAdapter = new newsListViewAdapter(activity, list);
-            listView.setAdapter(new newsListViewAdapter(activity, list));
+            newsListViewAdapter = new NewsListViewAdapter(activity, list);
+            listView.setAdapter(new NewsListViewAdapter(activity, list));
             listView.setXListViewListener(new XListView.IXListViewListener() {
                 @Override
                 public void onRefresh() {
@@ -145,7 +147,7 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
         jazzyViewPager.setOnClickListener(this);
         jazzyViewPager.setTransitionEffect(JazzyViewPager.TransitionEffect.CubeOut);
         // TODO: 2016/3/6  加图片路径
-        jazzyViewPager.setAdapter(new jazzViewPagerAdapter(activity,/* 加图片路径*/ null));
+        jazzyViewPager.setAdapter(new JazzViewPagerAdapter(activity,/* 加图片路径*/ null));
         jazzyViewPager.setCurrentItem(0);
         mHandler.sendEmptyMessageDelayed(MSG_CHANGE_PHOTO, PHOTO_CHANGE_TIME);
 
@@ -160,6 +162,9 @@ public final class ContentFragment extends Basefragment implements View.OnClickL
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent intent = new Intent(activity , NewsDeatileActivity.class);
+        activity.startActivity(intent);
     }
 }
+
+

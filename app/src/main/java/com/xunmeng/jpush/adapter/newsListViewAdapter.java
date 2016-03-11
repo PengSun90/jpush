@@ -14,13 +14,13 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/3/7.
  */
-public class newsListViewAdapter extends BaseAdapter {
+public class NewsListViewAdapter extends BaseAdapter {
 
 
     private Context context;
     private List<String> list = new ArrayList<>();
 
-    public newsListViewAdapter(Context context, List<String> list) {
+    public NewsListViewAdapter(Context context, List<String> list) {
         this.context = context;
         this.list = list;
     }

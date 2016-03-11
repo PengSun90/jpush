@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 
  * <p>
- * Title: jazzViewPagerAdapter.java
+ * Title: JazzViewPagerAdapter.java
  * </p>
  * <p>
  * E-Mail: 176291935@qq.com
@@ -36,7 +36,7 @@ import java.util.List;
  * @author ����
  * @version 0.0.1
  */
-public class jazzViewPagerAdapter extends PagerAdapter {
+public class JazzViewPagerAdapter extends PagerAdapter {
 
 	private ArrayList<View> mPageViewList;
 	private List<String> mImageList;
@@ -44,7 +44,7 @@ public class jazzViewPagerAdapter extends PagerAdapter {
 	private LayoutInflater mInflater;
 	// private ImageDownloader mImageDownloader;
 
-	public jazzViewPagerAdapter(Context context, List<String> imageList) {
+	public JazzViewPagerAdapter(Context context, List<String> imageList) {
 		mContext = context;
 		mImageList = imageList;
 		mPageViewList = new ArrayList<View>();

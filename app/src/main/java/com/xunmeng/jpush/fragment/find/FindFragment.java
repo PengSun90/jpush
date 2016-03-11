@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.fragment;
+package com.xunmeng.jpush.fragment.find;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xunmeng.jpush.R;
+import com.xunmeng.jpush.fragment.Basefragment;
 
 /**
  * Created by Administrator on 2016/3/3.
@@ -17,9 +18,7 @@ public class FindFragment extends Basefragment {
     private static String KEY_TITLE = "key_yitle";
     private static FindFragment fragment;
 
-    private FindFragment() {
 
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
 
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.app.MY;
 import com.xunmeng.jpush.utils.LogUtils;
+import com.xunmeng.jpush.utils.StatusBarCompat;
 
 public class SplashActivity extends Activity {
 
@@ -16,8 +16,9 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         LogUtils.d("");
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//       requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash);
+        StatusBarCompat.compat(this, getResources().getColor(R.color.colorPrimary));
 //        MY.getAppInstance().addActivity(this);
 
         new Handler().postDelayed(new Runnable() {

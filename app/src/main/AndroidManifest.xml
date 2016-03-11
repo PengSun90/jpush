@@ -206,7 +206,6 @@
         <activity android:name=".ui.AboutMeActivity" />
         <activity
             android:name=".ui.NewsDeatileActivity"
-            android:label="@string/title_activity_news_deatile"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.xunmeng.jpush.R;
+import com.xunmeng.jpush.utils.StatusBarCompat;
 
 public class NewsDeatileActivity extends AppCompatActivity {
 
@@ -15,17 +16,7 @@ public class NewsDeatileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_detail_ll);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        StatusBarCompat.compat(this, getResources().getColor(R.color.colorPrimary));
         initToolbar();
 
         initCollapsingToolbar();

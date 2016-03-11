@@ -22,10 +22,10 @@ import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.LeftAdapter;
 import com.xunmeng.jpush.app.MY;
 import com.xunmeng.jpush.entity.MainDrawerMenu;
-import com.xunmeng.jpush.fragment.FindFragment;
-import com.xunmeng.jpush.fragment.NewFragment;
-import com.xunmeng.jpush.fragment.ReadFragment;
-import com.xunmeng.jpush.fragment.VideoFragment;
+import com.xunmeng.jpush.fragment.find.FindFragment;
+import com.xunmeng.jpush.fragment.news.NewFragment;
+import com.xunmeng.jpush.fragment.read.ReadFragment;
+import com.xunmeng.jpush.fragment.video.VideoFragment;
 import com.xunmeng.jpush.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -95,11 +95,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 //        toolbar.setLogo(R.drawable.ic_launcher); //设置logo
 //        toolbar.setBackgroundColor(getResources().getColor(R.color.grey)); //设置背景颜色
 //        toolbar.setSubtitle("副标题"); //设置副标题
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true); //设置返回键可用
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_list_white);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open,
