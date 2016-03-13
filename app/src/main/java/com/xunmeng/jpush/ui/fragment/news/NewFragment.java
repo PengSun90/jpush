@@ -1,7 +1,8 @@
-package com.xunmeng.jpush.fragment.news;
+package com.xunmeng.jpush.ui.fragment.news;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.viewpagerindicator.TabPageIndicator;
 import com.xunmeng.jpush.R;
-import com.xunmeng.jpush.adapter.ViewPagerFragmentAdapter;
-import com.xunmeng.jpush.fragment.Basefragment;
+import com.xunmeng.jpush.ui.fragment.Basefragment;
 import com.xunmeng.jpush.utils.LogUtils;
 
 import java.util.ArrayList;
@@ -27,6 +26,8 @@ public class NewFragment extends Basefragment {
     private AppCompatActivity activity;
     private static String KEY_TITLE = "key_yitle";
     private static NewFragment fragment;
+    private TabLayout tabLayout;
+    private ViewPager news_pager;
 
     public static NewFragment getInstance() {
         if (fragment == null) {
@@ -62,7 +63,7 @@ public class NewFragment extends Basefragment {
 
         View view = inflater.inflate(R.layout.news_frg_ll, container, false);
 
-        ViewPager news_pager = (ViewPager) view.findViewById(R.id.news_pager);
+         news_pager = (ViewPager) view.findViewById(R.id.news_pager);
 
         String[] CONTENT = activity.getResources().getStringArray(R.array.news_title);
 
@@ -80,19 +81,28 @@ public class NewFragment extends Basefragment {
 
         if (news_pager.getAdapter() == null) {
 
-            FragmentPagerAdapter adapter = new ViewPagerFragmentAdapter(activity, activity.getSupportFragmentManager(), newsListFragmentlist, list);
+            FragmentPagerAdapter adapter = new NewsViewPagerFragmentAdapter(activity, activity.getSupportFragmentManager(), newsListFragmentlist, list);
 
             news_pager.setAdapter(adapter);
         } else {
 
-            ViewPagerFragmentAdapter ViewPagerFragmentAdapter = (ViewPagerFragmentAdapter) news_pager.getAdapter();
+            NewsViewPagerFragmentAdapter NewsViewPagerFragmentAdapter = (NewsViewPagerFragmentAdapter) news_pager.getAdapter();
 
-            ViewPagerFragmentAdapter.updateFragments(null, null);
+            NewsViewPagerFragmentAdapter.updateFragments(null, null);
         }
 
-        TabPageIndicator indicator = (TabPageIndicator) view.findViewById(R.id.news_indicator);
+//        TabPageIndicator indicator = (TabPageIndicator) view.findViewById(R.id.news_indicator);
 
-        indicator.setViewPager(news_pager);
+        tabLayout = (TabLayout) view.findViewById(R.id.news_indicator);
+
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(news_pager);
+            }
+        });
+
+//        indicator.setViewPager(news_pager);
 
         return view;
 

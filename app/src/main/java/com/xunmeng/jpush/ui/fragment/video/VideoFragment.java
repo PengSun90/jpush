@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.fragment.video;
+package com.xunmeng.jpush.ui.fragment.video;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,11 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.xunmeng.jpush.R;
-import com.xunmeng.jpush.adapter.ViewPagerFragmentAdapter;
-import com.xunmeng.jpush.fragment.Basefragment;
-import com.xunmeng.jpush.fragment.news.NewsListFragment;
-import com.xunmeng.jpush.ui.MainActivity;
-import com.xunmeng.jpush.utils.LogUtils;
+import com.xunmeng.jpush.ui.activity.MainActivity;
+import com.xunmeng.jpush.ui.fragment.Basefragment;
 import com.xunmeng.jpush.utils.MeasureUtil;
 
 import java.util.ArrayList;
@@ -70,30 +67,43 @@ public class VideoFragment extends Basefragment {
 
         viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
-        List<String> titles = Arrays.asList("热点", "娱乐", "搞笑", "精品");
+        List<String> titles = Arrays.asList("热点", "娱乐", "搞笑", "精品","嘻哈","热点", "娱乐", "搞笑", "精品","嘻哈");
 
-        List<NewsListFragment> newsListFragmentlist = new ArrayList<>();
-        newsListFragmentlist.add(NewsListFragment.newInstance());
-        newsListFragmentlist.add(NewsListFragment.newInstance());
-        newsListFragmentlist.add(NewsListFragment.newInstance());
-        newsListFragmentlist.add(NewsListFragment.newInstance());
+        List<VideoListFragment> videoListFragmentlist = new ArrayList<>();
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
+        videoListFragmentlist.add(VideoListFragment.newInstance());
 
-        tabLayout.setTabMode(TabLayout.MODE_FIXED);
-        tabLayout.addTab(tabLayout.newTab().setText(titles.get(0)));
-        LogUtils.e(titles.get(0));
-        tabLayout.addTab(tabLayout.newTab().setText(titles.get(1)));
-        LogUtils.e(titles.get(1));
-        tabLayout.addTab(tabLayout.newTab().setText(titles.get(2)));
-        LogUtils.e(titles.get(2));
-        tabLayout.addTab(tabLayout.newTab().setText(titles.get(3)));
-        LogUtils.e(titles.get(3));
+//        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+//        tabLayout.addTab(tabLayout.newTab().setText(titles.get(0)));
+//        LogUtils.e(titles.get(0));
+//        tabLayout.addTab(tabLayout.newTab().setText(titles.get(1)));
+//        LogUtils.e(titles.get(1));
+//        tabLayout.addTab(tabLayout.newTab().setText(titles.get(2)));
+//        LogUtils.e(titles.get(2));
+//        tabLayout.addTab(tabLayout.newTab().setText(titles.get(3)));
+//        LogUtils.e(titles.get(3));
 
-        ViewPagerFragmentAdapter adapter = new ViewPagerFragmentAdapter(activity, activity.getSupportFragmentManager(), newsListFragmentlist,
+        VideoViewPagerFragmentAdapter adapter = new VideoViewPagerFragmentAdapter(activity, activity.getSupportFragmentManager(), videoListFragmentlist,
                 titles);
 
         viewPager.setAdapter(adapter);
 
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(viewPager);
+            }
+        });
+
+//        tabLayout.setupWithViewPager(viewPager);
 
 //        dynamicSetTablayoutMode(tabLayout);
     }

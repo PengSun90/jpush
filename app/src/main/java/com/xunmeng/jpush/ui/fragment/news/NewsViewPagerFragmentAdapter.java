@@ -1,18 +1,18 @@
-package com.xunmeng.jpush.adapter;
+package com.xunmeng.jpush.ui.fragment.news;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.xunmeng.jpush.fragment.news.NewsListFragment;
+import com.xunmeng.jpush.ui.fragment.news.NewsListFragment;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/3/7.
  */
-public class ViewPagerFragmentAdapter extends FragmentPagerAdapter {
+public class NewsViewPagerFragmentAdapter extends FragmentPagerAdapter {
 
 
     private final List<NewsListFragment> mFragments;
@@ -34,7 +34,7 @@ public class ViewPagerFragmentAdapter extends FragmentPagerAdapter {
     }
 
 
-    public ViewPagerFragmentAdapter(Context context, FragmentManager fm, List<NewsListFragment> fragments, List<String> titles) {
+    public NewsViewPagerFragmentAdapter(Context context, FragmentManager fm, List<NewsListFragment> fragments, List<String> titles) {
         super(fm);
         this.mcontext = context;
         this.mFragmentManager = fm;

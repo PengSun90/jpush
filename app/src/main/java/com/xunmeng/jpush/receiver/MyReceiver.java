@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.xunmeng.jpush.ui.MainActivity;
+import com.xunmeng.jpush.ui.activity.MainActivity;
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.app.MY;
 import com.xunmeng.jpush.entity.NotifyEntity;

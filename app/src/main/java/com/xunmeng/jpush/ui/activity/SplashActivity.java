@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.ui;
+package com.xunmeng.jpush.ui.activity;
 
 import android.app.Activity;
 import android.content.Intent;

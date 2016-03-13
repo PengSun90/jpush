@@ -29,12 +29,13 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/colorPrimary"
+        style="@style/MyCustomTabLayout"
         app:tabGravity="fill"
+        app:tabMode="scrollable"
         app:tabIndicatorColor="@color/white"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/white"
-        tools:ignore="PrivateResource"
         />
 
     <!--<android.support.design.widget.TabLayout-->

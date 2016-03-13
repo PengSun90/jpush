@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.fragment.news;
+package com.xunmeng.jpush.ui.fragment.news;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,8 +12,8 @@ import android.widget.AdapterView;
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.NewsListViewAdapter;
 import com.xunmeng.jpush.adapter.JazzViewPagerAdapter;
-import com.xunmeng.jpush.fragment.Basefragment;
-import com.xunmeng.jpush.ui.NewsDeatileActivity;
+import com.xunmeng.jpush.ui.fragment.Basefragment;
+import com.xunmeng.jpush.ui.activity.NewsDeatileActivity;
 import com.xunmeng.jpush.widget.jazzViewPager.JazzyViewPager;
 import com.xunmeng.jpush.widget.xListView.XListView;
 

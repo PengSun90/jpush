@@ -62,7 +62,7 @@
             android:value="hequmVv7bDrX5pHhGHWN53q9" />
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -72,7 +72,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -202,10 +202,10 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".ui.LoginActivity" />
-        <activity android:name=".ui.AboutMeActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.AboutMeActivity" />
         <activity
-            android:name=".ui.NewsDeatileActivity"
+            android:name=".ui.activity.NewsDeatileActivity"
             android:theme="@style/AppTheme"></activity>
     </application>
 

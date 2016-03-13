@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.ui;
+package com.xunmeng.jpush.ui.activity;
 
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -22,10 +22,10 @@ import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.adapter.LeftAdapter;
 import com.xunmeng.jpush.app.MY;
 import com.xunmeng.jpush.entity.MainDrawerMenu;
-import com.xunmeng.jpush.fragment.find.FindFragment;
-import com.xunmeng.jpush.fragment.news.NewFragment;
-import com.xunmeng.jpush.fragment.read.ReadFragment;
-import com.xunmeng.jpush.fragment.video.VideoFragment;
+import com.xunmeng.jpush.ui.fragment.find.FindFragment;
+import com.xunmeng.jpush.ui.fragment.news.NewFragment;
+import com.xunmeng.jpush.ui.fragment.read.ReadFragment;
+import com.xunmeng.jpush.ui.fragment.video.VideoFragment;
 import com.xunmeng.jpush.utils.LogUtils;
 
 import java.util.ArrayList;

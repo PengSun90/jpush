@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.fragment;
+package com.xunmeng.jpush.ui.fragment;
 
 import android.support.v4.app.Fragment;
 

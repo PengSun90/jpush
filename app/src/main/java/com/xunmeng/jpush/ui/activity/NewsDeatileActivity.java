@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.ui;
+package com.xunmeng.jpush.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;

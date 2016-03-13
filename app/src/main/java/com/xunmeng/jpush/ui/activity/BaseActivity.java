@@ -1,4 +1,4 @@
-package com.xunmeng.jpush.ui;
+package com.xunmeng.jpush.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 
