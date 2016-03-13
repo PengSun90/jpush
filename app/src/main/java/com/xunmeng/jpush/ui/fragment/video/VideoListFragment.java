@@ -2,13 +2,12 @@ package com.xunmeng.jpush.ui.fragment.video;
 
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xunmeng.jpush.R;
 import com.xunmeng.jpush.ui.fragment.Basefragment;
@@ -30,15 +29,16 @@ public class VideoListFragment extends Basefragment {
     private View view;
     private RecyclerView mRecyclerView;
     private ArrayList<String> mDatas;
+    private HomeAdapter mStaggeredHomeAdapter;
 
     public static VideoListFragment newInstance() {
 //        synchronized (VideoListFragment.class) {
 //            if (videoListFragment == null) {
 
-                videoListFragment = new VideoListFragment();
+        videoListFragment = new VideoListFragment();
 
 //            }
-            return videoListFragment;
+        return videoListFragment;
 //        }
     }
 
@@ -64,66 +64,44 @@ public class VideoListFragment extends Basefragment {
 
     private void initUi() {
 
-        mRecyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+
+        mStaggeredHomeAdapter = new HomeAdapter(getActivity(),mDatas);
         //设置adapter
-        mRecyclerView.setAdapter(new HomeAdapter());
+        mRecyclerView.setAdapter(mStaggeredHomeAdapter);
+        mRecyclerView.setHasFixedSize(true);
+
         //设置Item增加、移除动画
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         //添加分割线
 //        mRecyclerView.addItemDecoration(new DividerItemDecoration(
 //                getActivity(), DividerItemDecoration.HORIZONTAL_LIST));
+        initEvent();
     }
-
-
-    protected void initData()
+    private void initEvent()
     {
-        mDatas = new ArrayList<String>();
-        for (int i = 0; i < 20; i++)
-        {
-            mDatas.add("" + i);
-        }
-    }
-
-
-    class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder>
-    {
-
-        @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-        {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                    getActivity()).inflate(R.layout.item_video_summary, parent,
-                    false));
-            return holder;
-        }
-
-        @Override
-        public void onBindViewHolder(MyViewHolder holder, int position)
-        {
-            holder.tv.setText(mDatas.get(position));
-            holder.img.setImageResource(R.drawable.me);
-        }
-
-        @Override
-        public int getItemCount()
-        {
-            return mDatas.size();
-        }
-
-        class MyViewHolder extends RecyclerView.ViewHolder
-        {
-
-            TextView tv;
-            ImageView img;
-
-            public MyViewHolder(View view)
-            {
-                super(view);
-                img = (ImageView)view.findViewById(R.id.iv_video_summary);
-                tv = (TextView) view.findViewById(R.id.tv_video_summary);
+        mStaggeredHomeAdapter.setOnItemClickLitener(new HomeAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(getActivity(),
+                        position + " click", Toast.LENGTH_SHORT).show();
             }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Toast.makeText(getActivity(),
+                        position + " long click", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+    protected void initData() {
+        mDatas = new ArrayList<String>();
+        for (int i = 0; i < 200; i++) {
+            mDatas.add("" + i);
         }
     }
 }
