@@ -26,4 +26,8 @@
         <attr name="outlineColor" format="color|reference" />
     </declare-styleable>
 
+    <declare-styleable name="ThreePointLoadingView">
+        <attr name="pointColor" format="color|reference" />
+    </declare-styleable>
+
 </resources>
